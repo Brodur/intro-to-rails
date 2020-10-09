@@ -3,4 +3,5 @@ class Planet < ApplicationRecord
   has_many :terrains, through: :planetary_terrains
 
   validates :name, :climate, presence: true
+  validates :name, uniquiness: true
 end
