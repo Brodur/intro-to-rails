@@ -1,0 +1,2 @@
+class Terrain < ApplicationRecord
+end
