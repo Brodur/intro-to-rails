@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_183316) do
+ActiveRecord::Schema.define(version: 2020_10_09_184614) do
 
   create_table "planetary_terrains", force: :cascade do |t|
     t.integer "planet_id", null: false
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2020_10_09_183316) do
   create_table "planets", force: :cascade do |t|
     t.string "name"
     t.string "climate"
-    t.string "terrain"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
