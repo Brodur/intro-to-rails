@@ -61,6 +61,9 @@ films.each do |film|
       PlanetaryClimate.find_or_create_by(planet: new_planet, climate: new_climate)
     end
   end
+
+  # Create the species
+  # ...
 end
 
 puts "Created #{PlanetaryTerrain.count} PlanetaryTerrains"
