@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_191405) do
+ActiveRecord::Schema.define(version: 2020_10_09_192520) do
 
   create_table "climates", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2020_10_09_191405) do
     t.date "release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "planet_appearances", force: :cascade do |t|
+    t.integer "planet_id", null: false
+    t.integer "film_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["film_id"], name: "index_planet_appearances_on_film_id"
+    t.index ["planet_id"], name: "index_planet_appearances_on_planet_id"
   end
 
   create_table "planetary_climates", force: :cascade do |t|
@@ -57,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_10_09_191405) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "planet_appearances", "films"
+  add_foreign_key "planet_appearances", "planets"
   add_foreign_key "planetary_climates", "climates"
   add_foreign_key "planetary_climates", "planets"
   add_foreign_key "planetary_terrains", "planets"
