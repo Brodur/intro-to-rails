@@ -5,6 +5,7 @@ PlanetaryTerrain.delete_all
 Terrain.delete_all
 PlanetaryClimate.delete_all
 Climate.delete_all
+PlanetAppearance.delete_all
 Planet.delete_all
 Film.delete_all
 
@@ -24,34 +25,41 @@ films.each do |film|
     puts "Invalid film #{film['title']}!"
     next
   end
-end
 
-# Create the planets
+  # Create the planets
 
-planets = Swapi.get_all("planets")["results"]
+  planet_urls = film["planets"]
 
-planets.each do |planet|
-  new_planet = Planet.find_or_create_by(name: planet["name"])
-
-  unless new_planet&.valid?
-    puts "Invalid planet #{planet['name']}!"
-    next
+  planets = []
+  planet_urls.each do |url|
+    planets << Swapi.get_planet(url.split("/").last)
   end
 
-  # Create the terrains
-  terrains = planet["terrain"].split(",").map(&:strip)
+  planets.each do |planet|
+    new_planet = Planet.find_or_create_by(name: planet["name"])
 
-  terrains.each do |terrain|
-    new_terrain = Terrain.find_or_create_by(name: terrain)
-    PlanetaryTerrain.create(planet: new_planet, terrain: new_terrain)
-  end
+    unless new_planet&.valid?
+      puts "Invalid planet #{planet['name']}!"
+      next
+    end
+    # Create the association
+    PlanetAppearance.find_or_create_by(planet: new_planet, film: new_film)
 
-  # Create the climates
-  climates = planet["climate"].split(",").map(&:strip)
+    # Create the terrains
+    terrains = planet["terrain"].split(",").map(&:strip)
 
-  climates.each do |climate|
-    new_climate = Climate.find_or_create_by(name: climate)
-    PlanetaryClimate.create(planet: new_planet, climate: new_climate)
+    terrains.each do |terrain|
+      new_terrain = Terrain.find_or_create_by(name: terrain)
+      PlanetaryTerrain.find_or_create_by(planet: new_planet, terrain: new_terrain)
+    end
+
+    # Create the climates
+    climates = planet["climate"].split(",").map(&:strip)
+
+    climates.each do |climate|
+      new_climate = Climate.find_or_create_by(name: climate)
+      PlanetaryClimate.find_or_create_by(planet: new_planet, climate: new_climate)
+    end
   end
 end
 
@@ -61,3 +69,4 @@ puts "Created #{PlanetaryClimate.count} PlanetaryClimates"
 puts "Created #{Climate.count} Climates"
 puts "Created #{Planet.count} Planets"
 puts "Created #{Film.count} Films"
+puts "Created #{PlanetAppearance.count} PlanetAppearances"
