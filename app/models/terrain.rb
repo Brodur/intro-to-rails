@@ -3,5 +3,5 @@ class Terrain < ApplicationRecord
   has_many :planets, through: :planetary_terrains
 
   validates :name, presence: true
-  validates :name, uniquiness: true
+  validates :name, uniqueness: true
 end
