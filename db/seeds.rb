@@ -31,10 +31,7 @@ end
 planets = Swapi.get_all("planets")["results"]
 
 planets.each do |planet|
-  new_planet = Planet.find_or_create_by(
-    name:    planet["name"],
-    climate: planet["climate"]
-  )
+  new_planet = Planet.find_or_create_by(name: planet["name"])
 
   unless new_planet&.valid?
     puts "Invalid planet #{planet['name']}!"
