@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'swapi', git: 'https://github.com/Brodur/swapi-ruby.git' # Star wars API Gem PATCHED BY ME
+gem 'swapi', git: 'https://github.com/Brodur/swapi-ruby.git' branch: 'patch-1'# Star wars API Gem PATCHED BY ME
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
