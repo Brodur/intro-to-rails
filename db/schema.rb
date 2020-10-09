@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_184614) do
+ActiveRecord::Schema.define(version: 2020_10_09_185827) do
+
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.integer "episode"
+    t.text "opening_crawl"
+    t.date "release_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "planetary_terrains", force: :cascade do |t|
     t.integer "planet_id", null: false
