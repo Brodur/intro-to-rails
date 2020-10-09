@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_182100) do
+ActiveRecord::Schema.define(version: 2020_10_09_183316) do
+
+  create_table "planetary_terrains", force: :cascade do |t|
+    t.integer "planet_id", null: false
+    t.integer "terrain_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["planet_id"], name: "index_planetary_terrains_on_planet_id"
+    t.index ["terrain_id"], name: "index_planetary_terrains_on_terrain_id"
+  end
 
   create_table "planets", force: :cascade do |t|
     t.string "name"
@@ -20,4 +29,12 @@ ActiveRecord::Schema.define(version: 2020_10_09_182100) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "terrains", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "planetary_terrains", "planets"
+  add_foreign_key "planetary_terrains", "terrains"
 end
