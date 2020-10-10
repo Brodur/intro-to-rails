@@ -1,2 +1,24 @@
-<h1>Films#show</h1>
-<p>Find me in app/views/films/show.html.erb</p>
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Episode <%= @film.episode %>: <%= @film.title %></h5>
+    <div class="card-body">
+      <h5 class="card-title">Released: <%= @film.release_date %></h5>
+      <p class="card-text"><%= @film.opening_crawl %></p>
+    </div>
+    <h5 class="card-header">Species Featured</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+    <h5 class="card-header">Planets Featured</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+    <div class="card-body">
+    <%= link_to 'Back', films_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="col mb-5">
+  <div class="card" style="width: 18rem;">
+    <h5 class="card-header">Episode <%= film.episode %>: <%= film.title %></h5>
+    <div class="card-body">
+      <h5 class="card-title">Released: <%= film.release_date %></h5>
+      <p class="card-text"><%= film.opening_crawl.truncate(100) %></p>
+      <%= link_to 'Details', film, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
