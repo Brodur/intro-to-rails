@@ -1,0 +1,22 @@
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+    <%= link_to root_path, class: "nav-link" do %>Home
+     <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(root_path) %>
+    <% end %>
+  </li>
+  <li class="nav-item <%= 'active' if current_page?(films_path) %>">
+    <%= link_to films_path, class: "nav-link" do %>Films
+     <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(films_path) %>
+    <% end %>
+  </li>
+  <li class="nav-item <%= 'active' if current_page?(planets_path) %>">
+    <%= link_to planets_path, class: "nav-link" do %>Planets
+     <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(planets_path) %>
+    <% end %>
+  </li>
+  <li class="nav-item <%= 'active' if current_page?(species_index_path) %>">
+    <%= link_to species_index_path, class: "nav-link" do %>Species
+     <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(species_index_path) %>
+    <% end %>
+  </li>
+</ul>
