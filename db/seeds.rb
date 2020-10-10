@@ -7,6 +7,8 @@ PlanetaryClimate.delete_all
 Climate.delete_all
 PlanetAppearance.delete_all
 Planet.delete_all
+SpeciesAppearance.delete_all
+Species.delete_all
 Film.delete_all
 
 # Create Films
@@ -63,7 +65,36 @@ films.each do |film|
   end
 
   # Create the species
-  # ...
+  species_urls = film["species"]
+  species = []
+  species_urls.each do |url|
+    species << Swapi.get_species(url.split("/").last)
+    species.last["homeworld"] = Swapi.get_planet(url.split("/").last)["name"]
+  end
+
+  species.each do |s|
+    new_species = Species.find_or_create_by(
+      name:             s["name"],
+      classification:   s["classification"],
+      designation:      s["designation"],
+      average_lifespan: s["average_lifespan"]
+    )
+
+    unless new_species&.valid?
+      puts "Invalid species #{s['name']}!"
+      next
+    end
+
+    # Associate homeworld
+    unless s["homeworld"].empty?
+      new_species.update(
+        planet: Planet.find_or_create_by(name: s["homeworld"])
+      )
+    end
+
+    # Create the association
+    SpeciesAppearance.find_or_create_by(species: new_species, film: new_film)
+  end
 end
 
 puts "Created #{PlanetaryTerrain.count} PlanetaryTerrains"
@@ -73,3 +104,5 @@ puts "Created #{Climate.count} Climates"
 puts "Created #{Planet.count} Planets"
 puts "Created #{Film.count} Films"
 puts "Created #{PlanetAppearance.count} PlanetAppearances"
+puts "Created #{Species.count} Species"
+puts "Created #{SpeciesAppearance.count} SpeciesAppearances"
