@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_152431) do
+ActiveRecord::Schema.define(version: 2020_10_10_154141) do
 
   create_table "climates", force: :cascade do |t|
     t.string "name"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_152431) do
     t.string "classification"
     t.string "designation"
     t.string "average_lifespan"
-    t.integer "planet_id", null: false
+    t.integer "planet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["planet_id"], name: "index_species_on_planet_id"
