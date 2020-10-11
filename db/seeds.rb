@@ -6,9 +6,9 @@ Terrain.delete_all
 PlanetaryClimate.delete_all
 Climate.delete_all
 PlanetAppearance.delete_all
-Planet.delete_all
 SpeciesAppearance.delete_all
 Species.delete_all
+Planet.delete_all
 Film.delete_all
 
 # Create Films
@@ -68,8 +68,13 @@ films.each do |film|
   species_urls = film["species"]
   species = []
   species_urls.each do |url|
-    species << Swapi.get_species(url.split("/").last)
-    species.last["homeworld"] = Swapi.get_planet(url.split("/").last)["name"]
+    sp = Swapi.get_species(url.split("/").last)
+
+    unless sp["homeworld"].nil?
+      sp_planet_id = sp["homeworld"].split("/").last
+      sp["homeworld"] = Swapi.get_planet(sp_planet_id)["name"]
+    end
+    species << sp
   end
 
   species.each do |s|
@@ -86,7 +91,7 @@ films.each do |film|
     end
 
     # Associate homeworld
-    unless s["homeworld"].empty?
+    unless s["homeworld"].nil?
       new_species.update(
         planet: Planet.find_or_create_by(name: s["homeworld"])
       )
