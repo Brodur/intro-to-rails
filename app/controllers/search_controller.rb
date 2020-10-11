@@ -2,7 +2,6 @@ class SearchController < ApplicationController
   def search
     search_type = params[:search_type].to_i
     search_term = params[:search_term]
-    puts "Got search request for #{search_term}, of type #{search_type}"
     @results = case search_type
                when 1
                  Film.search(search_term)
