@@ -7,15 +7,15 @@
     </div>
     <h5 class="card-header">Species Featured</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+        <% @film.species.each do |sp| %>
+          <li class="list-group-item"><%= link_to sp.name, sp %></li>
+        <% end %>
     </ul>
     <h5 class="card-header">Planets Featured</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+        <% @film.planets.each do |planet| %>
+          <li class="list-group-item"><%= link_to planet.name, planet %></li>
+        <% end %>
     </ul>
     <div class="card-body">
     <%= link_to 'All Films', films_path, class: "btn btn-secondary" %>
