@@ -2,16 +2,20 @@
   <div class="card">
     <h5 class="card-header"><%= @s_species.name %></h5>
     <div class="card-body">
-      <h5 class="card-title">Homeworld?</h5>
-      <p class="card-text">Card Text</p>
+      <%= %>
+      <h5 class="card-title">Homeworld</h5>
+      <p class="card-text"><%= link_to @s_species.planet.name, @s_species.planet %></p>
+      <h5 class="card-title">Characteristics</h5>
+      <p class="card-text">Designation: <%= @s_species.designation.humanize %></p>
+      <p class="card-text">Classification: <%= @s_species.classification.humanize %></p>
+      <p class="card-text">Average Lifespan: <%= @s_species.average_lifespan %></p>
     </div>
     <h5 class="card-header">Featured in films</h5>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+      <% @s_species.films.each do |film| %>
+        <li class="list-group-item"><%= link_to film.title, film %></li>
+      <% end %>
     </ul>
-    <h5 class="card-header">Planets Featured</h5>
     <div class="card-body">
     <%= link_to 'All Species', species_index_path, class: "btn btn-secondary" %>
     </div>

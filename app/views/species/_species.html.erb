@@ -2,8 +2,9 @@
   <div class="card" style="width: 18rem;">
     <h5 class="card-header"><%= species.name %></h5>
     <div class="card-body">
-      <h5 class="card-title">Title</h5>
-      <p class="card-text">Text</p>
+      <h5 class="card-title">Homeworld: <%= species.planet.name %></h5>
+      <p class="card-text">Designation: <%= species.designation %></p>
+      <p class="card-text">Classification: <%= species.classification %></p>
       <%= link_to 'Details', species, class: "btn btn-primary" %>
     </div>
   </div>
