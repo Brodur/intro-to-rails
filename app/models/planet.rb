@@ -20,4 +20,8 @@ class Planet < ApplicationRecord
   def terrains_list
     terrains.map(&:name).join(", ").humanize
   end
+
+  def self.search(search_term)
+    where("LOWER(name) LIKE ?", "%#{search_term.downcase}%")
+  end
 end

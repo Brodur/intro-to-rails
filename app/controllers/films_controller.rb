@@ -6,8 +6,4 @@ class FilmsController < ApplicationController
   def show
     @film = Film.find(params[:id])
   end
-
-  def self.search(search_term)
-    where("LOWER(title) LIKE ?", "%#{search_term.downcase}%")
-  end
 end

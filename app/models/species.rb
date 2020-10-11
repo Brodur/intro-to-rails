@@ -6,4 +6,8 @@ class Species < ApplicationRecord
 
   validates :name, :classification, :designation, :average_lifespan, presence: true
   validates :name, uniqueness: true
+
+  def self.search(search_term)
+    where("LOWER(name) LIKE ?", "%#{search_term.downcase}%")
+  end
 end
