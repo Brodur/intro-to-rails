@@ -1,0 +1,16 @@
+<div class="col mb-5 d-flex align-items-stretch">
+  <div class="card" style="width: 18rem;">
+    <h5 class="card-header">Films</h5>
+    <div class="card-body">
+      <h5 class="card-title"><%= films.count %> Random Movies</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% films.each do |film| %>
+        <li class="list-group-item"><%= link_to film.title, film %></li>
+      <% end %>
+    </ul>
+    <div class="card-body">
+      <%= link_to 'View All', films_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

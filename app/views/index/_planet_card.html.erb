@@ -1,0 +1,17 @@
+<div class="col mb-5 d-flex align-items-stretch">
+  <div class="card" style="width: 18rem;">
+    <h5 class="card-header">Planets</h5>
+    <div class="card-body">
+      <h5 class="card-title"><%= planets.count %> Random Planets</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% planets.each do |planet| %>
+        <li class="list-group-item"><%= link_to planet.name, planet %></li>
+      <% end %>
+    </ul>
+
+    <div class="card-body">
+      <%= link_to 'View All', planets_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

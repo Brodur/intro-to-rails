@@ -1,0 +1,16 @@
+<div class="col mb-5 d-flex align-items-stretch">
+  <div class="card" style="width: 18rem;">
+    <h5 class="card-header">Species</h5>
+    <div class="card-body">
+      <h5 class="card-title"><%= species.count %> Random Species</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% species.each do |specie| %>
+        <li class="list-group-item"><%= link_to specie.name, specie %></li>
+      <% end %>
+    </ul>
+    <div class="card-body">
+      <%= link_to 'View All', species_index_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
