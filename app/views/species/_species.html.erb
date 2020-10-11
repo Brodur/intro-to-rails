@@ -1,11 +1,18 @@
 <div class="col mb-5 d-flex align-items-stretch">
   <div class="card" style="width: 18rem;">
     <h5 class="card-header"><%= species.name %></h5>
-    <div class="card-body">
-      <h5 class="card-title">Homeworld: <%= species.planet.name %></h5>
-      <p class="card-text">Designation: <%= species.designation %></p>
-      <p class="card-text">Classification: <%= species.classification %></p>
-      <%= link_to 'Details', species, class: "btn btn-primary" %>
+    <div class="card-body d-flex flex-column">
+      <% unless species.planet.nil? %>
+        <h5 class="card-title">Homeworld: <%= species.planet.name %></h5>
+      <% end %>
+      <% unless species.designation.nil? %>
+        <p class="card-text">Designation: <%= species.designation %></p>
+      <% end %>
+      <% unless species.classification.nil? %>
+        <p class="card-text">Classification: <%= species.classification %></p>
+      <% end %>
+
+      <%= link_to 'Details', species, class: "btn mt-auto btn-primary" %>
     </div>
   </div>
 </div>

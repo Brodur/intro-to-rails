@@ -2,9 +2,10 @@
   <div class="card">
     <h5 class="card-header"><%= @s_species.name %></h5>
     <div class="card-body">
-      <%= %>
-      <h5 class="card-title">Homeworld</h5>
-      <p class="card-text"><%= link_to @s_species.planet.name, @s_species.planet %></p>
+      <% unless @s_species.planet.nil? %>
+        <h5 class="card-title">Homeworld</h5>
+        <p class="card-text"><%= link_to @s_species.planet.name, @s_species.planet %></p>
+      <% end %>
       <h5 class="card-title">Characteristics</h5>
       <p class="card-text">Designation: <%= @s_species.designation.humanize %></p>
       <p class="card-text">Classification: <%= @s_species.classification.humanize %></p>
