@@ -1,2 +1,6 @@
-<h1>Species#index</h1>
-<p>Find me in app/views/species/index.html.erb</p>
+<div class="container">
+  <h1>All Species</h1>
+  <div class="row">
+    <%= render partial: 'species', collection: @species %>
+  </div>
+</div>
