@@ -1,11 +1,17 @@
 <div class="col mb-5 d-flex align-items-stretch">
   <div class="card" style="width: 18rem;">
     <h5 class="card-header"><%= planet.name %></h5>
-    <div class="card-body">
-      <h5 class="card-title">Details</h5>
-      <p class="card-text"><%= 'Climate'.pluralize(planet.climates.count) %>: <%= planet.climates_list %></p>
-      <p class="card-text"><%= 'Terrain'.pluralize(planet.terrains.count) %>: <%= planet.terrains_list %></p>
-      <%= link_to 'Details', planet, class: "btn btn-primary" %>
+    <div class="card-body d-flex flex-column">
+      <% unless planet.climates.count == 0 &&  planet.terrains.count == 0 %>
+        <h5 class="card-title">Geography</h5>
+        <% unless planet.climates.count %>
+          <p class="card-text"><%= 'Climate'.pluralize(planet.climates.count) %>: <%= planet.climates_list %></p>
+        <% end %>
+        <% unless planet.terrains.count == 0 %>
+          <p class="card-text"><%= 'Terrain'.pluralize(planet.terrains.count) %>: <%= planet.terrains_list %></p>
+        <% end %>
+      <% end %>
+      <%= link_to 'Details', planet, class: "btn mt-auto btn-primary" %>
     </div>
   </div>
 </div>
