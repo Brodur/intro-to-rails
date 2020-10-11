@@ -12,4 +12,12 @@ class Planet < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def climates_list
+    climates.map(&:name).join(", ").humanize
+  end
+
+  def terrains_list
+    terrains.map(&:name).join(", ").humanize
+  end
 end

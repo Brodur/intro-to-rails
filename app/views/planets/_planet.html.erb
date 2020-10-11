@@ -2,8 +2,9 @@
   <div class="card" style="width: 18rem;">
     <h5 class="card-header"><%= planet.name %></h5>
     <div class="card-body">
-      <h5 class="card-title">Title</h5>
-      <p class="card-text">Text</p>
+      <h5 class="card-title">Details</h5>
+      <p class="card-text"><%= 'Climate'.pluralize(planet.climates.count) %>: <%= planet.climates_list %></p>
+      <p class="card-text"><%= 'Terrain'.pluralize(planet.terrains.count) %>: <%= planet.terrains_list %></p>
       <%= link_to 'Details', planet, class: "btn btn-primary" %>
     </div>
   </div>

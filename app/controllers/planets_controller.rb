@@ -1,6 +1,6 @@
 class PlanetsController < ApplicationController
   def index
-    @planets = Planet.order("name ASC")
+    @planets = Planet.includes(:climates, :terrains).order("name ASC")
   end
 
   def show
