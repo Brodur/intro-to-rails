@@ -1,24 +1,14 @@
 # README
+## Description:
+[SWAPI.dev](https://swapi.dev/) is an api with star wards planet, species, film, vehicle, character, and starship information.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Using the API to seed the database, fetching all Films, and exploring the relationships between films, species, and planets.
 
-Things you may want to cover:
+## Dependencies:
+1. [Swapi-Ruby patched API](https://github.com/Brodur/swapi-ruby/tree/patch-1)
 
-* Ruby version
+----------
+## Entity Relationship Diagram:
+![ERD](https://i.imgur.com/u5GMmsK.png)
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
